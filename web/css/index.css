@@ -1,0 +1,225 @@
+.goods{
+    float:left;
+    list-style: none;
+    margin: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #ff400b;
+    padding: 5px;
+    width: 312px;
+    text-align: left;
+    background-color: #ffe9c5;
+}
+.goods input[type=submit]{
+    margin: 0;
+    text-align: center;
+}
+.moDes textarea{
+    height: 100px;
+    width: 300px;
+    transition: background-color 0.5s;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+#moImg{
+    float: left;
+    margin-left: 100px;
+}
+#moInput{
+    margin-left: 50px ;
+    float: left;
+}
+.moDes textarea:focus{
+    border-color: #ff400b;
+    background-color: #fff7e5;
+}
+.goods.td1{
+    width: 50px;
+}
+.des{
+    height: 50px;
+    margin-left: 5px;
+}
+.adminDes{
+    margin-left: 12px;
+    height: 100px;
+}
+.name{
+    font-size: large;
+    margin-left: 5px;
+
+}
+
+.price{
+    color: #ff400b;
+    font-size: x-large;
+}
+img{
+    width: 300px;
+    height: 300px;
+}
+
+input[type=submit]{
+    border-style: solid;
+    border-color: #ff400b;
+    border-radius: 5px;
+    padding: 5px;
+    border-width: 1px;
+    background-color: white;
+    color: #ff400b;
+    transition: background-color 0.3s;
+    margin: 20px;
+}
+input[type=submit]:hover{
+    background-color: #ff400b;
+    color: white;
+}
+input[type=submit]:active{
+    background-color: #b50000;
+    color: white;
+}
+table{
+    border-color: #ff400b;
+    border-style: solid;
+    margin: 0 auto;
+    border-width: 2px;
+    padding: 10px;
+}
+tr{
+    transition: background-color 0.2s;
+}
+tr:hover{
+    background-color: #ffddb0;
+}
+.cartNum input[type=submit]{
+    width: 27px;
+    height: 27px;
+}
+body{
+    text-align: center;
+    width: 1366px;
+    height: 457px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fffff5;
+}
+/*.info{*/
+/*    background-color: #fffff5;*/
+/*    margin: 5px;*/
+/*}*/
+#ma input[type=submit]{
+    width: 150px;
+}
+.body{
+    margin-left: 10px;
+}
+input[type=text]{
+    transition: background-color 0.5s;
+    height: 30px;
+    border-radius: 5px;
+    width: 200px;
+    border-style: solid;
+    border-width: 1px;
+}
+#cartNull{
+    color: #ff400b;
+}
+input[type=text]:focus{
+    border-color: #ff400b;
+    background-color: #fff7e5;
+}
+input[type=text]:hover{
+    border-color: #ff400b;
+    background-color: #fff7e5;
+}
+input[type=password]{
+    transition: background-color 0.5s;
+    height: 30px;
+    border-radius: 5px;
+    width: 200px;
+    border-style: solid;
+    border-width: 1px;
+}
+input[type=password]:focus{
+    border-color: #ff400b;
+    background-color: #fff7e5;
+}
+input[type=password]:hover{
+    border-color: #ff400b;
+    background-color: #fff7e5;
+}
+#menu{
+    margin-bottom: 50px;
+}
+input{
+    margin: 5px;
+}
+input [type=checkbox]{
+    background-color: white;
+}
+.form{
+    border-style: solid;
+    border-radius: 5px;
+    width: 500px;
+    border-width: 2px;
+    margin: 0 auto;
+    padding: 20px;
+    border-color: #ff400b;
+}
+button{
+    border-style: solid;
+    border-color: #ff400b;
+    border-radius: 5px;
+    padding: 5px;
+    border-width: 1px;
+    background-color: white;
+    color: #ff400b;
+    transition: background-color 0.5s;
+    margin: 20px;
+}
+button:hover{
+    background-color: #ff400b;
+    color: white;
+}
+.first{
+    background-color: #ffddb0;
+}
+hr{
+    border:none;
+    background-color: #ff400b;
+    height: 1px;
+}
+#header{
+    float: right;
+}
+#logo{
+    float: left;
+    margin-left: 50px;
+}
+.h{
+
+}
+#logo img{
+    width: 220px;
+    height: 110px;
+    margin: 0;
+}
+#menu{
+    padding-top: 60px;
+}
+body{
+
+}
+#total{
+    color: #ff400b;
+    font-size: x-large;
+}
+ul{
+    padding-top: 0;
+}
+
+
+
+
