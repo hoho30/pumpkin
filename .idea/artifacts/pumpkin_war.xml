@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="war" name="pumpkin:war">
-    <output-path>C:/jar</output-path>
+    <output-path>$USER_HOME$/Desktop</output-path>
     <root id="archive" name="pumpkin_war.war">
       <element id="artifact" artifact-name="pumpkin:war exploded" />
     </root>

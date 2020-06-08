@@ -1,6 +1,7 @@
-<%@ page import="hello.world.servlet.DBUtilsDaoGoods" %>
+<%@ page import="hello.world.dao.DBUtilsDaoGoods" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.sql.SQLException" %><%--
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="hello.world.javaClass.Goods" %><%--
   Created by IntelliJ IDEA.
   User: hoho
   Date: 2019/12/14
@@ -20,7 +21,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <title>Title</title>
+    <title>商品管理</title>
     <style>
         #goodsManage {
             background-color: #ff400b;
@@ -36,45 +37,59 @@
     </style>
 </head>
 <body>
-
 <%@ include file="header.jsp" %>
-<br/>
 <%@ include file="menu.jsp" %>
+<%
+    if(request.getParameter("name")!=null){
+        request.setAttribute("name",request.getParameter("name"));
+    }
+%>
 <div class="body" id="ma">
     <c:forEach items="${goodsList}" var="i">
-        <div class="goods">
-            <div><img src="${i.picture}" alt="${i.name}"></div>
-            <div class="info">
-                <table>
-                    <tr>
-                        <td class="td1">id：</td>
-                        <td>${i.id}</td>
-                    </tr>
-                    <tr>
-                        <td class="td1">商品名称：</td>
-                        <td>${i.name}</td>
-                    </tr>
-                    <tr>
-                        <td class="td1">价格：</td>
-                        <td>￥${i.price}</td>
-                    </tr>
-                    <tr>
-                        <td class="td1">销量：</td>
-                        <td>${i.sales}</td>
-                    </tr>
-                </table>
-                <div class="adminDes">描述：${i.description}</div>
-            </div>
+<%--        <p>i.s:${i.getSalesmanName()}..name:${name}</p>--%>
+        <c:if test="${i.salesmanName==name}">
+<%--        <c:if test="${true}">--%>
+            <div class="goods">
+                <div>
+                    <a href="goodsInformation.jsp?id=${i.id}">
+                        <img src="${i.picture}" alt="${i.name}"/>
+                    </a>
+                </div>
+                <div class="info">
+                    <table>
+                        <tr>
+                            <td class="td1">id：</td>
+                            <td>${i.id}</td>
+                        </tr>
+                        <tr>
+                            <td class="td1">商品名称：</td>
+                            <td>${i.name}</td>
+                        </tr>
+<%--                        <tr>--%>
+<%--                            <td class="td1">价格：</td>--%>
+<%--                            <td>￥${i.price}</td>--%>
+<%--                        </tr>--%>
+<%--                        <tr>--%>
+<%--                            <td class="td1">销量：</td>--%>
+<%--                            <td>${i.sales}</td>--%>
+<%--                        </tr>--%>
+                    </table>
+<%--                    <div class="adminDes">描述：${i.description}</div>--%>
+                </div>
 
-            <hr/>
-            <div>
-                <form method="post">
-                    <input type="hidden" name="id" value="${i.id}">
-                    <input type="submit" value="修改" formaction="modifyGoods.jsp">
-                    <input type="submit" value="删除" formaction="DeleteGoodsServlet">
-                </form>
+<%--                <hr/>--%>
+                <div>
+
+                    <a href="modifyGoods.jsp?id=${i.id}" class="menu-link">
+                        <input type="submit" value="修改">
+                    </a>
+                    <a href="DeleteGoodsServlet?id=${i.id}" class="menu-link">
+                        <input type="submit" value="删除">
+
+                    </a>
+                </div>
             </div>
-        </div>
+        </c:if>
     </c:forEach>
 
 </div>

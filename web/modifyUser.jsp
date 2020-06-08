@@ -1,4 +1,4 @@
-<%@ page import="hello.world.servlet.DBUtilsDao" %><%--
+<%@ page import="hello.world.dao.DBUtilsDao" %><%--
   Created by IntelliJ IDEA.
   User: hoho
   Date: 2019/12/15
@@ -9,7 +9,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>账户信息管理</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>

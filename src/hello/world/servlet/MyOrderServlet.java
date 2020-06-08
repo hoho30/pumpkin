@@ -1,12 +1,15 @@
 package hello.world.servlet;
 
+import hello.world.dao.OrderDao;
+import hello.world.javaClass.Order;
+import hello.world.javaClass.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -27,7 +30,7 @@ public class MyOrderServlet extends HttpServlet {
 //            }
             Collections.sort(list);
             request.setAttribute("orders",list);
-            request.getRequestDispatcher("/pumpkin/myorder.jsp").forward(request,response);
+            request.getRequestDispatcher("myorder.jsp").forward(request,response);
 
         }catch (SQLException e){
             e.printStackTrace();

@@ -1,5 +1,11 @@
 package hello.world.servlet;
 
+import hello.world.dao.DBUtilsDaoGoods;
+import hello.world.dao.RecordDao;
+import hello.world.javaClass.Goods;
+import hello.world.javaClass.Record;
+import hello.world.javaClass.Salesman;
+import hello.world.javaClass.User;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -9,10 +15,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sound.midi.Soundbank;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +28,8 @@ public class UploadServlet extends HttpServlet {
             throws ServletException, IOException {
         DBUtilsDaoGoods dao=new DBUtilsDaoGoods();
         Goods goods=new Goods();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date=df.format(new Date());
         DiskFileItemFactory diskFileItemFactory=new DiskFileItemFactory();
         diskFileItemFactory.setRepository(new File(this.getServletContext().getRealPath("/temp")));
         diskFileItemFactory.setSizeThreshold(1024*1024*10);
@@ -37,7 +46,7 @@ public class UploadServlet extends HttpServlet {
                         goods.setId(Integer.parseInt(item.getString("utf-8")));
                     }
                     if(item.getFieldName().equals("price")){
-                        goods.setPrice(Integer.parseInt(item.getString("utf-8")));
+                        goods.setPrice(Float.parseFloat(item.getString("utf-8")));
 
                     }
                     if(item.getFieldName().equals("description")){
@@ -46,8 +55,14 @@ public class UploadServlet extends HttpServlet {
                     if(item.getFieldName().equals("name")){
                         goods.setName(item.getString("utf-8"));
                     }
+                    if(item.getFieldName().equals("category")){
+                        goods.setCategory(item.getString("utf-8"));
+                    }
                     if(item.getFieldName().equals("picture")){
                         tempPicture=item.getString("utf-8");
+                    }
+                    if(item.getFieldName().equals("stock")){
+                        goods.setStock(Integer.parseInt(item.getString("utf-8")));
                     }
 
                 }else {
@@ -75,32 +90,40 @@ public class UploadServlet extends HttpServlet {
                 System.out.println(tempPicture);
                 goods.setPicture(tempPicture);
             }
+            dao.update(goods);
+            Record record = new Record();
+            record.setTime(date);
+            if(request.getSession().getAttribute("user").getClass().equals(User.class)){
+                User user = (User)request.getSession().getAttribute("user");
+                record.setUsername(user.getUsername());
+            }else {
+                Salesman salesman = (Salesman)request.getSession().getAttribute("user");
+                record.setUsername(salesman.getName());
+            }
+            record.setOperation(
+                    "修改商品（商品号：" +
+                            goods.getId() +
+                            ")");
+            record.setIp(request.getRemoteAddr());
+            RecordDao recordDao = new RecordDao();
+            recordDao.insertRecord(record);
+            response.setContentType("text/html;charset=utf-8");
+            response.getWriter().write("<script>" +
+                    "alert('修改成功，图片加载需要一定的时间哦，看不到图片请刷新页面');" +
+                    "location.href='goodsInformation.jsp?id=" +
+                    goods.getId() +
+                    "';" +
+                    "</script>");
 
         }catch (FileUploadException e){
             e.printStackTrace();
-        }
-        try{
-            if(dao.update(goods)){
-                System.out.println("success");
-            }else {
-                System.out.println("defeat");
-            }
-            response.getWriter().write("<script>" +
-                    "alert('修改成功，图片加载需要一定的时间哦，看不到图片请刷新页面');" +
-                    "location.href='/pumpkin/goodsManage.jsp';" +
-                    "</script>");
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-
+        doPost(request,response);
     }
 }

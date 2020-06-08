@@ -1,5 +1,8 @@
 package hello.world.servlet;
 
+import hello.world.dao.DBUtilsDao;
+import hello.world.javaClass.User;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,13 +19,13 @@ public class ModifyPasswordServlet extends HttpServlet {
         String p1=request.getParameter("password1");
         String p2=request.getParameter("password2");
         if(!p1.equals(p2)){
-            RequestDispatcher requestDispatcher=request.getRequestDispatcher("/modifyPassword.jsp");
+            RequestDispatcher requestDispatcher=request.getRequestDispatcher("modifyPassword.jsp");
             request.setAttribute("tips","两次密码不一致");
             requestDispatcher.forward(request,response);
             return;
         }
         if(p2.length()<6){
-            RequestDispatcher dispatcher=request.getRequestDispatcher("/modifyPassword.jsp");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("modifyPassword.jsp");
             request.setAttribute("tips","密码长度不足6位");
             dispatcher.forward(request,response);
             return;
@@ -34,7 +37,7 @@ public class ModifyPasswordServlet extends HttpServlet {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        response.sendRedirect("/pumpkin/modifyUser.jsp");
+        response.sendRedirect("modifyUser.jsp");
 
     }
 

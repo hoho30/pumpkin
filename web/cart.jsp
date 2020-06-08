@@ -1,8 +1,8 @@
 <%@ page import="java.util.Map" %>
-<%@ page import="hello.world.servlet.Goods" %>
+<%@ page import="hello.world.javaClass.Goods" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="hello.world.servlet.RecordDao" %><%--
+<%@ page import="hello.world.dao.RecordDao" %><%--
   Created by IntelliJ IDEA.
   User: hoho
   Date: 2019/12/4
@@ -11,20 +11,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <title>Title</title>
+    <title>购物车</title>
     <style>
         #cart{
             background-color: #ff400b;
             color: white;
-        }
-        input[type=submit]{
-            margin: 0;
-        }
-        form{
-            margin: auto;
         }
 
     </style>
@@ -37,7 +32,7 @@
 <%--<h1 id="cartNull">购物车空空如也，快去选购商品吧</h1>--%>
 <c:choose>
     <c:when test="${cart==null||cart=='{}'}">
-        <h1 id="cartNull">购物车空空如也，快去选购商品吧</h1>
+        <h1 id="cartNull">您的购物车还是空的，赶紧行动吧！</h1>
     </c:when>
     <c:otherwise>
         <div id="cartText"><table>
@@ -64,7 +59,9 @@
                                 <input value="+" type="submit" formaction="AddCartGoodsNumServlet">
                             </form>
                         </td>
-                        <td >￥${entry.value*entry.key.price}</td>
+                        <td >
+                            ￥<fmt:formatNumber value="${entry.value*entry.key.price}" type="currency" pattern=".00"/>
+                        </td>
                     </tr>
                     <c:set value="${total+entry.value*entry.key.price}" var="total"/>
                 </c:if>
@@ -72,10 +69,14 @@
             <br/>
         </table>
             <div >
-                合计：<div id="total">￥${total}</div>
+                合计：
+                <div id="total">
+                    ￥
+                    <fmt:formatNumber value="${total}" type="currency" pattern=".00"/>
+                </div>
             </div>
             <form action="BuyServlet" method="post">
-                <input type="submit" value="提交订单">
+                <input type="submit" value="提交订单" class="add-cart">
             </form>
         </div>
     </c:otherwise>

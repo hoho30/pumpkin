@@ -3,7 +3,9 @@
 <%@ page import="hello.world.servlet.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="java.util.Collections" %><%--
+<%@ page import="java.util.Collections" %>
+<%@ page import="hello.world.dao.OrderDao" %>
+<%@ page import="hello.world.javaClass.Order" %><%--
   Created by IntelliJ IDEA.
   User: hoho
   Date: 2019/12/4
@@ -11,6 +13,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 
     User user=(User)request.getSession().getAttribute("user");
@@ -31,14 +34,11 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <title>Title</title>
+    <title>我的订单</title>
     <style>
         #myOrder{
             background-color: #ff400b;
             color: white;
-        }
-        h1{
-            color: #ff400b;
         }
     </style>
 </head>
@@ -51,7 +51,7 @@
         <h1>您还没购买过任何商品呢</h1>
     </c:when>
     <c:otherwise>
-        <table>
+        <table class="order-table">
             <tr class="first">
                 <td>订单号</td>
                 <td>商品名称</td>
@@ -78,7 +78,11 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="price">合计：￥${total}</td>
+                        <td class="price">
+                            合计：￥
+                            <fmt:formatNumber value="${total}" type="currency" pattern=".00"/>
+
+                        </td>
                     </tr>
                     <tr>
                         <td><hr/></td>
@@ -96,7 +100,9 @@
                     <td>${entry.name}</td>
                     <td>${entry.number}</td>
                     <td>${entry.price}</td>
-                    <td>${entry.number*entry.price}</td>
+                    <td>
+                        <fmt:formatNumber value="${entry.number*entry.price}" type="currency" pattern=".00"/>
+                    </td>
                     <td>${entry.date}</td>
                 </tr>
                 <c:set var="total" value="${total+entry.number*entry.price}"/>
@@ -108,7 +114,11 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td class="price">合计：￥${total}</td>
+                <td class="price">
+                    合计：￥
+                    <fmt:formatNumber value="${total}" type="currency" pattern=".00"/>
+
+                </td>
             </tr>
         </table>
     </c:otherwise>

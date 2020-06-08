@@ -1,5 +1,7 @@
 package hello.world.servlet;
 
+import hello.world.javaClass.Goods;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +43,7 @@ public class ReduceCartGoodsNumServlet extends HttpServlet {
 //            }
 //        }
         session.setAttribute("cart",cart);
-        response.sendRedirect("/pumpkin/cart.jsp");
+        response.sendRedirect("cart.jsp");
 
     }
 

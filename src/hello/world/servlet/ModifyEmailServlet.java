@@ -1,5 +1,8 @@
 package hello.world.servlet;
 
+import hello.world.dao.DBUtilsDao;
+import hello.world.javaClass.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,16 +17,13 @@ public class ModifyEmailServlet extends HttpServlet {
         User user=(User) request.getSession().getAttribute("user");
         user.setEmail(request.getParameter("email"));
         try {
-            if(dbUtilsDao.update(user)){
-                System.out.println("修改邮箱成功");
-            }else{
-                System.out.println("修改邮箱失败");
-            }
+            dbUtilsDao.update(user);
+
         }catch (SQLException e){
             e.printStackTrace();
         }
 
-        response.sendRedirect("/pumpkin/modifyUser.jsp");
+        response.sendRedirect("modifyUser.jsp");
 
     }
 

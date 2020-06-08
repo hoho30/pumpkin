@@ -1,5 +1,8 @@
 package hello.world.servlet;
 
+import hello.world.dao.DBUtilsDaoGoods;
+import hello.world.javaClass.Goods;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,14 +23,26 @@ public class AddCartServlet extends HttpServlet {
         int number=Integer.parseInt(request.getParameter("number"));
         try{
             Goods goods=dao.find(id);
+
             if(goods!=null){
-                Integer count=cart.put(goods,number);
-                if(count!=null){
-                    cart.put(goods,number+count);
+                if(goods.getStock()<=0){
+                    response.getWriter().write("<script>" +
+                            "alert('该商品已售罄');" +
+                            "location.href='goodsDetails.jsp?id=" +
+                            id +
+                            "';" +
+                            "</script>");
+                }else{
+                    Integer count=cart.put(goods,number);
+                    if(count!=null){
+                        cart.put(goods,number+count);
+                    }
+                    request.getSession().setAttribute("cart",cart);
+                    response.sendRedirect("goodsDetails.jsp?id=" +
+                            id);
                 }
-                request.getSession().setAttribute("cart",cart);
             }
-            response.sendRedirect("/pumpkin/index.jsp#"+request.getParameter("id"));
+
         }catch (SQLException e){
            e.printStackTrace();
         }

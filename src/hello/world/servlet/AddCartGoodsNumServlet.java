@@ -1,5 +1,7 @@
 package hello.world.servlet;
 
+import hello.world.javaClass.Goods;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +21,7 @@ public class AddCartGoodsNumServlet extends HttpServlet {
             }
         }
         session.setAttribute("cart",cart);
-        response.sendRedirect("/pumpkin/cart.jsp#"+request.getParameter("xuHao"));
+        response.sendRedirect("cart.jsp#"+request.getParameter("xuHao"));
 
 
     }

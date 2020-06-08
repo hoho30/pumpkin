@@ -4,17 +4,35 @@
     margin: 5px;
     border-style: solid;
     border-width: 1px;
-    border-radius: 5px;
-    border-color: #ff400b;
+    border-radius: 0px;
+    border-color: #b8b6b8;
     padding: 5px;
     width: 312px;
     text-align: left;
-    background-color: #ffe9c5;
+    /*background-color: #ffe9c5;*/
+}
+.goods:hover{
+    border-color: #ff400b;
+    transition: border-color 0.5s;
 }
 .goods input[type=submit]{
     margin: 0;
     text-align: center;
 }
+.title-words{
+    display: inline-block;
+    vertical-align:middle;
+    width: 800px;
+    text-align: center;
+}
+.one-goods-record-table{
+    width: 70%;
+    font-size: larger;
+}
+.one-goods-record-table td{
+    /*text-align: center;*/
+}
+
 .moDes textarea{
     height: 100px;
     width: 300px;
@@ -26,6 +44,10 @@
 #moImg{
     float: left;
     margin-left: 100px;
+}
+.td-description{
+    height: 108px;
+    width: 333px;
 }
 #moInput{
     margin-left: 50px ;
@@ -51,10 +73,32 @@
     margin-left: 5px;
 
 }
+.info-table-first{
+    width: 100px;
+}
 
 .price{
     color: #ff400b;
     font-size: x-large;
+}
+.table-description{
+    height: 75px;
+    /*display: block;*/
+    /*width: 470px;*/
+}
+.text-des{
+    height: 108px;
+    width: 333px;
+}
+.all-goods-record{
+    width: 70%;
+    font-size: larger;
+}
+.add-goods-button{
+    font-size: large;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
 }
 img{
     width: 300px;
@@ -62,45 +106,81 @@ img{
 }
 
 input[type=submit]{
-    border-style: solid;
-    border-color: #ff400b;
-    border-radius: 5px;
     padding: 5px;
-    border-width: 1px;
-    background-color: white;
-    color: #ff400b;
-    transition: background-color 0.3s;
+    background-color: #ff400b;
+    border-radius: 2px;
+    color: white;
     margin: 20px;
+    border: none;
+    cursor: pointer;
 }
 input[type=submit]:hover{
-    background-color: #ff400b;
+    background-color: red;
     color: white;
 }
-input[type=submit]:active{
-    background-color: #b50000;
-    color: white;
+.add-cart{
+    width: 200px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.description{
+    margin: 10px;
+    height: 200px;
+    margin-top: 20px;
+    font-size: x-large;
+    display: inline-block;
+    vertical-align: middle;
+}
+.details{
+    height: 500px;
+    margin-left: 600px;
+    border-style: solid;
+    border-color: #b8b6b8;
+    border-width: 1px;
+}
+.details-price{
+    font-weight: bold;
+    color: red;
+    font-size: 40px;
+}
+.stock{
+}
+.login-button{
+    width: 100px;
+    height: 40px;
+    font-size: larger;
 }
 table{
     border-color: #ff400b;
     border-style: solid;
     margin: 0 auto;
-    border-width: 2px;
+    border-width: 1px;
     padding: 10px;
 }
-tr{
-    transition: background-color 0.2s;
-}
-tr:hover{
-    background-color: #ffddb0;
+.info-table{
+    font-size: larger;
+    margin-left: 500px;
+    width: 600px;
+    margin-top: 60px;
 }
 .cartNum input[type=submit]{
     width: 27px;
     height: 27px;
 }
+.two-button{
+    margin-left: 500px;
+    width: 600px;
+    margin-top: 30px;
+}
+.detail-img img{
+    float: left;
+    width: 500px;
+    height: 500px;
+}
 body{
     text-align: center;
-    width: 1366px;
-    height: 457px;
+    width: 1350px;
+    height: 1080px;
     margin-left: auto;
     margin-right: auto;
     background-color: #fffff5;
@@ -128,11 +208,9 @@ input[type=text]{
 }
 input[type=text]:focus{
     border-color: #ff400b;
-    background-color: #fff7e5;
 }
 input[type=text]:hover{
     border-color: #ff400b;
-    background-color: #fff7e5;
 }
 input[type=password]{
     transition: background-color 0.5s;
@@ -142,13 +220,20 @@ input[type=password]{
     border-style: solid;
     border-width: 1px;
 }
+.order-table{
+    font-size: larger;
+    width: 70%;
+}
+.add-salesman-button{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+}
 input[type=password]:focus{
     border-color: #ff400b;
-    background-color: #fff7e5;
 }
 input[type=password]:hover{
     border-color: #ff400b;
-    background-color: #fff7e5;
 }
 #menu{
     margin-bottom: 50px;
@@ -178,6 +263,7 @@ button{
     color: #ff400b;
     transition: background-color 0.5s;
     margin: 20px;
+    cursor: pointer;
 }
 button:hover{
     background-color: #ff400b;
@@ -186,31 +272,54 @@ button:hover{
 .first{
     background-color: #ffddb0;
 }
+.category{
+    font-size: larger;
+}
 hr{
     border:none;
     background-color: #ff400b;
     height: 1px;
 }
 #header{
-    float: right;
+    text-align: right;
 }
 #logo{
-    float: left;
+    /*float: left;*/
     margin-left: 50px;
+    display: inline-block;
+    vertical-align:middle
 }
+.search{
+    display: inline-block;
+    vertical-align:middle;
+    margin-left: 100px;
+}
+
+.search input[type=text]{
+    width: 500px;
+    height: 40px;
+    font-size: 25px;
+    margin: 0;
+    vertical-align:middle;
+
+}
+.search input[type=submit]{
+    height: 40px;
+    width: 50px;
+    border-radius: 5px;
+    margin: 0;
+    vertical-align:middle;
+}
+.title{
+    text-align: left;
+}
+
 .h{
 
 }
 #logo img{
     width: 220px;
     height: 110px;
-    margin: 0;
-}
-#menu{
-    padding-top: 60px;
-}
-body{
-
 }
 #total{
     color: #ff400b;
@@ -218,6 +327,38 @@ body{
 }
 ul{
     padding-top: 0;
+}
+.common-link{
+    color: black;
+    text-decoration: underline;
+}
+.common-link:link{
+    color: black;
+    text-decoration: underline;
+}
+.common-link:visited{
+    color: black;
+    text-decoration: underline;
+
+}
+.common-link:hover{
+    color: #ff400b;
+    text-decoration: underline;
+
+}
+.menu-link{
+    text-decoration: none;
+}
+.menu-link:visited{
+    color: black;
+}
+.add-salesman-div{
+    width: 70%;
+    font-size: larger;
+    margin-left: 15%;
+    text-align: left;
+}
+.add-salesman-div a{
 }
 
 

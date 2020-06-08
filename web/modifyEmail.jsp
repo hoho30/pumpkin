@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>修改邮箱地址</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
